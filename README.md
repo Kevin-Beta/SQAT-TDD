@@ -15,7 +15,7 @@ To run the test, please open the "SQAT" folder as IntelliJ IDEA project.
 The parameter of this method has only one String type variable, which solves requirements one to three
 
 ```java
-	/*
+    /*
         Requirement 1-3
     */
     public String greet(String name) {
@@ -42,7 +42,7 @@ The method divides names into three categories: normal, shouted and special. Nor
 Special attention should be paid to the step 3 that comma contained in a pair of quotes cannot be used as the dividing line for segmentation, otherwise Requirement 8 is violated.
 
 ```java
-/*
+    /*
         Requirement 4-8
     */
 
