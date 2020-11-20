@@ -10,7 +10,7 @@ To run the test, please open the "SQAT" folder as IntelliJ IDEA project.
 
 # Detail
 
-###  greet(String name):String
+##  greet(String name):String
 
 The parameter of this method has only one String type variable, which solves requirements one to three
 
@@ -29,11 +29,11 @@ The parameter of this method has only one String type variable, which solves req
     }
 ```
 
-### greet(String[] name) :String
+## greet(String[] name) :String
 
 The parameter of this method is a String type array, which solves requirements 4 to 8.
 
-##### The core idea of the method
+### The core idea of the method
 
 The method divides names into three categories: normal, shouted and special. Normal and shouted are described the same as the requirements. Special name refers to the name containing quote. The method first divides the name by category by using stack. The rules are as follows:
 1. Normal or shouted name (Requirement 4-6), directly into the stack
