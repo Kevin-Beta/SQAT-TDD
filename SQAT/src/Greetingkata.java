@@ -13,7 +13,7 @@ public class Greetingkata {
     */
     public String greet(String name) {
         if (name != null) {
-            //Requirement 1&Requirement 3
+            //Requirement 1 & Requirement 3
             return name.equals(name.toUpperCase()) ? "HELLO " + name + "!" : "Hello, " + name + ".";
         } else {
             //Requirement 2
@@ -26,7 +26,7 @@ public class Greetingkata {
     */
 
     /*
-     * 判断名字是否为Shouted
+     * Return true if the name is Shouted
      * */
     private Boolean isShouted(String name){
         Boolean flag=false;
@@ -39,7 +39,7 @@ public class Greetingkata {
     }
 
     /*
-     * 对于normal name的打招呼语句
+     * Combine non-Shouted names into statements
      * */
     private String normalMeet(String[] name,int len){
         String result="Hello, ";
@@ -59,7 +59,7 @@ public class Greetingkata {
     }
 
     /*
-     * 对于shouted name的打招呼语句
+     * Combine Shouted names into statements
      * */
     private String shoutedMeet(String[] name,int len){
         String result=" AND HELLO ";
@@ -79,15 +79,19 @@ public class Greetingkata {
         return result;
     }
 
+    /*
+    * greet() Method，Processing Multiple Groups of Names
+    * */
     public String greet(String[] name) {
         ArrayList<String> arrName=new ArrayList<>();
-        //R7,处理带有comas的name
+        //Requirement7, processing name with comas
         for(int i=0;i<name.length;i++){
-            //R8,如果包含quete则不处理
+            //Requirement8,if quete is contained, just push it into stack
             if(name[i].contains("\"")){
                 String s=name[i].replace("\"","");
-                arrName.add(name[i]);
+                arrName.add(s);
             }else {
+                //split by commas and push each part into stack
                 String[] str = name[i].split(",");
                 for (int j = 0; j < str.length; j++) {
                     str[j] = str[j].replace(" ", "");
@@ -103,7 +107,7 @@ public class Greetingkata {
         String[] normalName=new String[len];
         String[] shoutedName=new String[len];
 
-        //计算normal和shouted个数,并将两者分组
+        //Calculates the number of normal and shouted, and deliver them into two groups
         for(int i=0;i<len;i++) {
             IsShouted[i] = isShouted(name[i]);
             if (IsShouted[i]) {
@@ -115,6 +119,7 @@ public class Greetingkata {
             }
         }
 
+        //combine the final sentence by making each type of sentence
         String result=normalMeet(normalName,normal_cnt)+shoutedMeet(shoutedName,shouted_cnt);
         return result;
     }
