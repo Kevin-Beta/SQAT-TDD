@@ -30,7 +30,7 @@ public class Greetingkata {
      * */
     private Boolean isShouted(String name){
         Boolean flag=false;
-        if(name.equals(name.toUpperCase())){
+        if(name.equals(name.toUpperCase()) && !name.contains("\"")){
             flag=true;
         }else{
             flag=false;
@@ -79,39 +79,20 @@ public class Greetingkata {
         return result;
     }
 
-    private int classify(String name){
-        int result=0;
-        if(name.contains(",")){
-            if(name.contains("\"")){
-                if(name.charAt(name.length()-1)=='\"'){
-                    result=3;   //包含quote,且quote包括了整个名字
-                }else{
-                    result=4;   //包含quote，但quote之外还有commas
-                }
-            }else{
-                result=2;   //包含commas不包含quote
-            }
-        }else{
-            result=1;   //normal和shouted
-        }
-        return result;
-    }
-
     public String greet(String[] name) {
         ArrayList<String> arrName=new ArrayList<>();
-
-        for(int i=0;i<name.length;i++) {
-            switch (classify(name[i])){
-                case 1:{}
-            }
-        }
-
-        //处理带有comas的name
+        //R7,处理带有comas的name
         for(int i=0;i<name.length;i++){
-            String[] str=name[i].split(",");
-            for(int j=0;j<str.length;j++){
-                str[j]=str[j].replace(" ","");
-                arrName.add(str[j]);
+            //R8,如果包含quete则不处理
+            if(name[i].contains("\"")){
+                String s=name[i].replace("\"","");
+                arrName.add(name[i]);
+            }else {
+                String[] str = name[i].split(",");
+                for (int j = 0; j < str.length; j++) {
+                    str[j] = str[j].replace(" ", "");
+                    arrName.add(str[j]);
+                }
             }
         }
 
